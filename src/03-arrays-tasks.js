@@ -446,9 +446,9 @@ function toStringList(arr) {
  *    ]
  */
 function sortCitiesArray(arr) {
-  return arr.sort((a, b) => {
-    if (a.country !== b.country) { return a.country.localeCompare(b.country); } return a.city.localeCompare(b.city);
-  });
+  return arr.sort((a, b) => ((a.country === b.country)
+    ? a.city.localeCompare(b.city)
+    : a.country.localeCompare(b.country)));
 }
 
 /**
@@ -486,8 +486,8 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  return Array.from({ length: end - start + 1 }, (el, ind) => start + ind);
 }
 
 /**
@@ -501,8 +501,8 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return Array.from(new Set(arr));
 }
 
 /**
